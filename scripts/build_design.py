@@ -79,5 +79,5 @@ for line in roles:
         d.text((28,17),text,font=font,fill='#65e6ef')
         frames.append(im)
     frames.extend([im.copy() for _ in range(22)])
-frames[0].save(ASSETS/'typing.gif',save_all=True,append_images=frames[1:],duration=85,loop=0,optimize=True)
+frames[0].save(ASSETS/'engineering-roles.gif',save_all=True,append_images=frames[1:],duration=85,loop=0,optimize=True)
 print('Original banner, project cards, badges, footer and typing animation built.')

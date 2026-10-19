@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/typing.gif" width="620" alt="Electrical &amp; Electronics Engineering student / Embedded systems developer / Exploring robotics and autonomy">
+  <img src="assets/engineering-roles.gif" width="620" alt="Electrical &amp; Electronics Engineering student / Embedded systems developer / Exploring robotics and autonomy">
 </p>
 
 <p align="center">
