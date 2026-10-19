@@ -1,8 +1,6 @@
-<p align="center">
-  <img src="assets/banner.svg" width="100%" alt="Diyan Patel — Electrical & Electronics Engineering. Embedded systems, robotics and software.">
-</p>
+<h1 align="center">Hi, I'm Diyan Patel.</h1>
 
-<h1 align="center">Hi, I'm Diyan.</h1>
+<p align="center"><strong>Electronics · Firmware · Software</strong></p>
 
 <p align="center">
   Electrical & Electronics Engineering student at <strong>Ahmedabad University</strong>.<br>
