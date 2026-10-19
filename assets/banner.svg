@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420"><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080e20"/><stop offset="1" stop-color="#161b39"/></linearGradient>
+<linearGradient id="accent"><stop stop-color="#65e6ef"/><stop offset=".5" stop-color="#4d8dff"/><stop offset="1" stop-color="#b298ff"/></linearGradient>
+<radialGradient id="halo"><stop stop-color="#4d8dff" stop-opacity=".2"/><stop offset="1" stop-color="#4d8dff" stop-opacity="0"/></radialGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#819eea" stroke-opacity=".07"/></pattern>
+</defs>
+<rect width="1280" height="420" rx="22" fill="url(#bg)"/>
+<rect width="1280" height="420" rx="22" fill="url(#grid)"/>
+<ellipse cx="1000" cy="210" rx="300" ry="260" fill="url(#halo)"/>
+<path d="M42 0H1238" stroke="url(#accent)" stroke-width="5"/>
+<g fill="none" stroke="#65e6ef" opacity=".25" stroke-width="1.5">
+<path d="M790 85h60l35 35h70M775 330h90l40-40h50M1130 100h65v70h85M1130 290h70v50h80"/>
+<path d="M780 180h92M765 222h107M1140 208h140M1035 80V20M1035 330v90"/>
+</g>
+<g transform="translate(1005 207)">
+<circle r="130" fill="none" stroke="#9c87ff" stroke-opacity=".35" stroke-dasharray="3 12"/>
+<circle r="110" fill="none" stroke="#4d8dff" stroke-opacity=".5"/>
+<path d="M-110 0a110 110 0 0 1 110-110M110 0a110 110 0 0 1-110 110" fill="none" stroke="#65e6ef" stroke-width="3"/>
+<rect x="-65" y="-65" width="130" height="130" rx="13" fill="#0c152b" stroke="url(#accent)" stroke-width="2"/>
+<rect x="-49" y="-49" width="98" height="98" rx="8" fill="#101d37" stroke="#293d60"/>
+<g stroke="#7498ca" stroke-width="3"><path d="M-42 -80v15M-42 65v15M-80 -42h15M65 -42h15"/><path d="M-28 -80v15M-28 65v15M-80 -28h15M65 -28h15"/><path d="M-14 -80v15M-14 65v15M-80 -14h15M65 -14h15"/><path d="M0 -80v15M0 65v15M-80 0h15M65 0h15"/><path d="M14 -80v15M14 65v15M-80 14h15M65 14h15"/><path d="M28 -80v15M28 65v15M-80 28h15M65 28h15"/><path d="M42 -80v15M42 65v15M-80 42h15M65 42h15"/></g><text x="0" y="14" text-anchor="middle" font-family="Consolas,monospace" font-size="42" font-weight="700" fill="#e8f5ff">DP</text></g><g font-family="Segoe UI,Arial,sans-serif"><text x="60" y="75" font-size="16" fill="#65e6ef" font-weight="600">ELECTRICAL &amp; ELECTRONICS / ENGINEERING</text><text x="56" y="177" font-size="76" fill="#f1f6ff" font-weight="700">DIYAN PATEL</text><rect x="60" y="203" width="84" height="4" rx="2" fill="url(#accent)"/><text x="60" y="257" font-size="28" fill="#c1cce2" font-weight="400">Electronics. Firmware. Software.</text><text x="60" y="301" font-size="18" fill="#8f9fbe" font-weight="400">Embedded systems / Robotics / Autonomous vehicles</text><text x="60" y="377" font-size="13" fill="#8194b5" font-weight="600">AHMEDABAD UNIVERSITY</text></g></svg>
