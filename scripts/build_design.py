@@ -63,11 +63,16 @@ for slug,label,icon,color in [
 write('footer.svg',card(920,75,'<path d="M30 1h860" stroke="#667ed1"/>'+txt(26,44,'DIYAN PATEL',14,'#65e6ef',600)+txt(513,44,'ELECTRONICS · FIRMWARE · SOFTWARE',13,'#92a4c6')))
 
 font_path = Path('C:/Windows/Fonts/consola.ttf')
-font = ImageFont.truetype(str(font_path),23)
+roles = ['Electrical & Electronics Engineering student','Embedded systems developer','Exploring robotics and autonomy']
+font_size = 23
+font = ImageFont.truetype(str(font_path),font_size)
+while max(font.getlength('> '+role+' _') for role in roles) > 704:
+    font_size -= 1
+    font = ImageFont.truetype(str(font_path),font_size)
 first=Image.new('RGB',(760,64),'#0b1224')
-ImageDraw.Draw(first).text((28,17),'> EEE student _',font=font,fill='#65e6ef')
+ImageDraw.Draw(first).text((28,17),'> '+roles[0]+' _',font=font,fill='#65e6ef')
 frames=[first.copy() for _ in range(16)]
-for line in ['EEE student','Embedded systems developer','Exploring robotics and autonomy']:
+for line in roles:
     for n in range(len(line)+1):
         im=Image.new('RGB',(760,64),'#0b1224'); d=ImageDraw.Draw(im)
         text='> '+line[:n]+' _'
