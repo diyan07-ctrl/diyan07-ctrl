@@ -32,19 +32,11 @@ I'm interested in the connection between code and the physical world: microcontr
   <img src="assets/project-embedded.svg" width="100%" alt="01 / STM32 Embedded Platform — autonomous-vehicle firmware with FreeRTOS, CAN, sensor drivers and PWM actuator control. Open repository.">
 </a>
 
-Firmware for an STM32F401RE autonomous-vehicle controller, with modules for CAN communication, IMU and ultrasonic sensing, PWM control, and safety handling.
-
-**C · STM32 · FreeRTOS · CAN · I²C · SPI · UART** &nbsp; [Explore the firmware ↗](https://github.com/diyan07-ctrl/Stm32embeddedplatform)
-
 <br>
 
 <a href="https://github.com/diyan07-ctrl/ENR106-Facial-Recognition-Attendance-System">
   <img src="assets/project-vision.svg" width="100%" alt="02 / Facial Recognition Attendance — ENR106 academic project using Python, OpenCV and a graphical interface. Open repository.">
 </a>
-
-An ENR106 academic project that brings together face registration, recognition, a graphical interface, and class and attendance management.
-
-**Python · OpenCV · Tkinter · CSV** &nbsp; [Explore the application ↗](https://github.com/diyan07-ctrl/ENR106-Facial-Recognition-Attendance-System)
 
 ## Engineering toolkit
 
