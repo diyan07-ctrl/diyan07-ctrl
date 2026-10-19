@@ -99,8 +99,15 @@ def main():
         body += f'<rect x="{31+week*16}" y="{90+row*16}" width="12" height="12" rx="3" fill="{palette[level]}"><title>{day}: {count} contributions</title></rect>'
     body += txt(26,232,f'{min(counts)} — {max(counts)} · Updated {STAMP} · UTC',12,'#8294b3')
     activity = card(920,255,body)
+    body = txt(24,33,'GITHUB / CONTRIBUTION STREAK',13,'#b2a3ff',600)
+    for x, value, label in [(24,current,'Current streak'),(170,longest,'Longest streak'),(316,sum(counts.values()),'Contributions')]:
+        body += txt(x,96,value,38,'#edf4ff',600)+txt(x,124,label,12)
+    body += txt(24,166,'Last year · public calendar · UTC',12,'#8294b3')
+    streak = card(450,190,body)
+    ist = dt.datetime.now(dt.timezone(dt.timedelta(hours=5,minutes=30)))
+    updated = card(360,32,txt(14,21,'Last updated: '+ist.strftime('%d %b %Y, %H:%M')+' IST',12,'#a8b8d1'))
     # Do not replace cards until all data sources and parsing succeed.
-    for name,value in [('stats.svg',stats),('languages.svg',langs),('activity.svg',activity)]:
+    for name,value in [('stats.svg',stats),('languages.svg',langs),('activity.svg',activity),('streak.svg',streak),('last-updated.svg',updated)]:
         write(name,value)
     print(f'Generated public cards: {len(original)} original repos, {sum(counts.values())} contributions; {STAMP}')
 
