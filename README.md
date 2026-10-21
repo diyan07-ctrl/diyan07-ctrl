@@ -1,7 +1,6 @@
 # Diyan Patel
 
-I'm an Electrical and Electronics Engineering student at Ahmedabad University, interested in embedded systems, robotics, and autonomous vehicles. I work with C and Python, connecting software with microcontrollers, sensors, and electronics. My public projects include [STM32 firmware](https://github.com/diyan07-ctrl/Stm32embeddedplatform) and a [facial-recognition attendance system](https://github.com/diyan07-ctrl/ENR106-Facial-Recognition-Attendance-System).
-
+I'm an Electrical and Electronics Engineering student at Ahmedabad University, interested in embedded systems, robotics, and autonomous vehicles. 
 ## What I work with
 
 <table>
