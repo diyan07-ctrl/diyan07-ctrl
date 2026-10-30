@@ -1,7 +1,8 @@
 name: Refresh public profile cards
 on:
   schedule:
-    - cron: '23 2 * * *'
+    # Check hourly; the gate below keeps a five-hour cycle across midnight.
+    - cron: '23 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -12,12 +13,24 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
+      - name: Check five-hour refresh cycle
+        id: cycle
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]] || (( ($(date -u +%s) / 3600) % 5 == 0 )); then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/checkout@v4
+        if: steps.cycle.outputs.refresh == 'true'
       - uses: actions/setup-python@v5
+        if: steps.cycle.outputs.refresh == 'true'
         with:
           python-version: '3.13'
       - run: python scripts/refresh_cards.py
+        if: steps.cycle.outputs.refresh == 'true'
       - name: Commit updated public cards
+        if: steps.cycle.outputs.refresh == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
