@@ -1,6 +1,7 @@
 # Diyan Patel
 
-I'm an Electrical and Electronics Engineering student at Ahmedabad University, interested in embedded systems, robotics, and autonomous vehicles. 
+I'm an Electrical and Electronics Engineering student at Ahmedabad University, interested in embedded systems, robotics, and autonomous vehicles. I also build deterministic simulation and backend systems.
+
 ## What I work with
 
 <table>
@@ -19,6 +20,20 @@ I'm an Electrical and Electronics Engineering student at Ahmedabad University, i
 </td>
 </tr>
 </table>
+
+## Featured project
+
+### [PULSE XI](https://github.com/Microsoft-Game-Developer-Hackathon-2026/Pulse-Xi): Football intelligence
+
+Built with a four-person team for the **Microsoft Game Developer Hackathon 2026: Inside the Game**. PULSE XI turns synthetic football events into explainable match intelligence, with evidence-linked insights, broadcast cues, personalized recaps, and reproducible tactical experiments.
+
+**My contributions:** authoritative simulator, tactics and interventions, manifests, deployment template, and demo video. The server runs the deterministic match engine; checkpoints and paired ForkCast experiments make tactical changes reproducible and independently verifiable.
+
+**Project stack:** Python | FastAPI | Pydantic | SQLite | React | TypeScript | Three.js | Docker | GitHub Actions
+
+[Live demo](https://pulse-xi-demo.onrender.com) | [Source code](https://github.com/Microsoft-Game-Developer-Hackathon-2026/Pulse-Xi) | [Demo video](https://drive.google.com/file/d/1Ouk2DloBjsDCS9ujcF0mYv8MjwbJ2nL7/view) | [Engine architecture](https://github.com/Microsoft-Game-Developer-Hackathon-2026/Pulse-Xi/blob/main/docs/AUTHORITATIVE_ENGINE.md)
+
+The public demo is read-only and may take about a minute to wake up. It uses synthetic match data and rule-based explanations.
 
 ## GitHub Statistics
 
