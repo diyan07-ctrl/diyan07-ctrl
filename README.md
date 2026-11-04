@@ -1,6 +1,6 @@
 # Diyan Patel
 
-I'm an Electrical and Electronics Engineering student at Ahmedabad University, interested in embedded systems, robotics, and autonomous vehicles. I also build deterministic simulation and backend systems.
+I'm an Electrical and Electronics Engineering student at Ahmedabad University, working on embedded systems, robotics, autonomous vehicles, and computer vision. My projects combine microcontroller firmware, robot control, and camera-based applications.
 
 ## What I work with
 
@@ -12,6 +12,8 @@ I'm an Electrical and Electronics Engineering student at Ahmedabad University, i
 
 <p><strong>Also work with</strong><br><img height="28" src="assets/flat-opencv.svg" alt="OpenCV">&nbsp; <img height="28" src="assets/flat-tkinter.svg" alt="Tkinter">&nbsp; <img height="28" src="assets/flat-cubeide.svg" alt="STM32CubeIDE"></p>
 
+<p><strong>Robotics &amp; control</strong><br>ESP32 &middot; Raspberry Pi &middot; Arduino &middot; C++ &middot; ESP-NOW &middot; CAN</p>
+
 </td>
 <td width="40%" valign="middle" align="center">
 
@@ -21,19 +23,33 @@ I'm an Electrical and Electronics Engineering student at Ahmedabad University, i
 </tr>
 </table>
 
-## Featured project
+## Projects
 
-### [PULSE XI](https://github.com/Microsoft-Game-Developer-Hackathon-2026/Pulse-Xi): Football intelligence
+### [Quadruped107](https://github.com/diyan07-ctrl/Quadruped107)
 
-Built with a four-person team for the **Microsoft Game Developer Hackathon 2026: Inside the Game**. PULSE XI turns synthetic football events into explainable match intelligence, with evidence-linked insights, broadcast cues, personalized recaps, and reproducible tactical experiments.
+An eight-servo quadruped software port using a **Raspberry Pi 4**, **Pi camera**, and **Arduino Uno R3**. The Pi handles browser controls, video, and blue-ball tracking; the Uno executes gait sequences through a PCA9685 over a USB serial link. Includes stop handling, connection watchdogs, CAD assets, and setup documentation. Physical hardware validation and gait calibration remain in progress.
 
-**My contributions:** authoritative simulator, tactics and interventions, manifests, deployment template, and demo video. The server runs the deterministic match engine; checkpoints and paired ForkCast experiments make tactical changes reproducible and independently verifiable.
+**Stack:** Python · C++ · Raspberry Pi · Arduino · Picamera2 · OpenCV · Flask
 
-**Project stack:** Python | FastAPI | Pydantic | SQLite | React | TypeScript | Three.js | Docker | GitHub Actions
+### [ESP32 Gesture-Controlled Drone](https://github.com/diyan07-ctrl/esp32-gesture-controlled-drone)
 
-[Live demo](https://pulse-xi-demo.onrender.com) | [Source code](https://github.com/Microsoft-Game-Developer-Hackathon-2026/Pulse-Xi) | [Demo video](https://drive.google.com/file/d/1Ouk2DloBjsDCS9ujcF0mYv8MjwbJ2nL7/view) | [Engine architecture](https://github.com/Microsoft-Game-Developer-Hackathon-2026/Pulse-Xi/blob/main/docs/AUTHORITATIVE_ENGINE.md)
+An experimental quadcopter controller and gesture glove built around two **ESP32 boards**, **MPU6500 IMUs**, and **ESP-NOW** communication. Includes flex-sensor calibration, attitude estimation, PID control, motor mixing, and failsafe logic. Hardware and flight validation remain separate from the software tests.
 
-The public demo is read-only and may take about a minute to wake up. It uses synthetic match data and rule-based explanations.
+**Stack:** C++ · ESP32 · ESP-NOW · PlatformIO · Python
+
+### [STM32 Embedded Platform](https://github.com/diyan07-ctrl/Stm32embeddedplatform)
+
+Embedded firmware for a **BFMC 2026 autonomous vehicle controller** using an **STM32F401RE** and **FreeRTOS**. Covers CAN communication with a companion computer, sensor interfaces, steering and drive PWM, and watchdog-based safety handling.
+
+**Stack:** C++ · STM32 · FreeRTOS · CAN · STM32CubeIDE
+
+### [Facial Recognition Attendance System](https://github.com/diyan07-ctrl/ENR106-Facial-Recognition-Attendance-System)
+
+A Python computer-vision application developed for **ENR106 at Ahmedabad University**. Supports face registration and recognition, a graphical interface, user and class management, and attendance records.
+
+**Stack:** Python · OpenCV · Tkinter · CSV
+
+[Earlier attendance-system repository](https://github.com/diyan07-ctrl/Face-Recognition-Attendance-system) · [All repositories](https://github.com/diyan07-ctrl?tab=repositories)
 
 ## GitHub Statistics
 
