@@ -99,7 +99,7 @@ mobile = mobile[:start] + '''
  <text x="34" y="499" font-size="15" letter-spacing="2" fill="#97a5bd">COMPUTER VISION</text>
  <text x="34" y="564" font-size="12" letter-spacing="1.3" fill="#7e8ca4">AHMEDABAD UNIVERSITY</text>
 ''' + mobile[end:]
-(ASSETS / 'banner-mobile.svg').write_text(mobile, encoding='utf-8')
+(ASSETS / 'banner-mobile.svg').write_text('\n'.join(line.rstrip() for line in mobile.splitlines()) + '\n', encoding='utf-8')
 body='<rect x="1" y="1" width="598" height="418" rx="18" fill="#0b1019" stroke="#252d3c"/><g font-family="Segoe UI,Arial,sans-serif">'
 for y,num,title,subtitle in [(36,'01','Close to the hardware','Firmware / interfaces / real-time systems'),(176,'02','Thinking in motion','Robotics / control / autonomy'),(316,'03','Making sense of pixels','Computer vision / Python / OpenCV')]:
     if y > 36:
