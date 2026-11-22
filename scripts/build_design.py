@@ -1,83 +1,113 @@
-"""Rebuild original vector artwork and local typing animation (requires Pillow)."""
-import math
+"""Build original, self-contained dark liquid-glass SVG artwork; no dependencies."""
 from pathlib import Path
-import sys
-from PIL import Image, ImageDraw, ImageFont
 
-sys.path.insert(0, str(Path(__file__).parent))
-from refresh_cards import ASSETS, card, txt, write
+ASSETS = Path(__file__).resolve().parents[1] / 'assets'
+ASSETS.mkdir(exist_ok=True)
 
-body = '''<defs>
-<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080e20"/><stop offset="1" stop-color="#161b39"/></linearGradient>
-<linearGradient id="accent"><stop stop-color="#65e6ef"/><stop offset=".5" stop-color="#4d8dff"/><stop offset="1" stop-color="#b298ff"/></linearGradient>
-<radialGradient id="halo"><stop stop-color="#4d8dff" stop-opacity=".2"/><stop offset="1" stop-color="#4d8dff" stop-opacity="0"/></radialGradient>
-<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#819eea" stroke-opacity=".07"/></pattern>
+def save(name, body, width, height, title):
+    (ASSETS / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{title}</title>{body}</svg>', encoding='utf-8')
+
+save('banner.svg', '''
+<defs>
+ <linearGradient id="canvas" x2="1" y2="1"><stop stop-color="#10141e"/><stop offset=".55" stop-color="#080b12"/><stop offset="1" stop-color="#111125"/></linearGradient>
+ <radialGradient id="aura"><stop stop-color="#6358ed" stop-opacity=".38"/><stop offset="1" stop-color="#6358ed" stop-opacity="0"/></radialGradient>
+ <linearGradient id="liquid" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#d2ffff" stop-opacity=".94"/><stop offset=".17" stop-color="#78d9ee" stop-opacity=".5"/><stop offset=".43" stop-color="#384a93" stop-opacity=".16"/><stop offset=".72" stop-color="#8d72f1" stop-opacity=".4"/><stop offset="1" stop-color="#dfd2ff" stop-opacity=".9"/></linearGradient>
+ <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ecffff" stop-opacity=".9"/><stop offset=".35" stop-color="#a1b9ff" stop-opacity=".1"/><stop offset=".7" stop-color="#b6a3ff" stop-opacity=".2"/><stop offset="1" stop-color="#e2dcff" stop-opacity=".9"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+ <clipPath id="bounds"><rect x="1" y="1" width="1198" height="438" rx="26"/></clipPath>
 </defs>
-<rect width="1280" height="420" rx="22" fill="url(#bg)"/>
-<rect width="1280" height="420" rx="22" fill="url(#grid)"/>
-<ellipse cx="1000" cy="210" rx="300" ry="260" fill="url(#halo)"/>
-<path d="M42 0H1238" stroke="url(#accent)" stroke-width="5"/>
-<g fill="none" stroke="#65e6ef" opacity=".25" stroke-width="1.5">
-<path d="M790 85h60l35 35h70M775 330h90l40-40h50M1130 100h65v70h85M1130 290h70v50h80"/>
-<path d="M780 180h92M765 222h107M1140 208h140M1035 80V20M1035 330v90"/>
+<style>
+ .float { animation: float 10s ease-in-out infinite; transform-origin: 920px 217px; }
+ .breathe { animation: breathe 8s ease-in-out infinite; }
+ @keyframes float { 0%,100% { transform:translateY(0) rotate(-3deg); } 50% { transform:translateY(-10px) rotate(3deg); } }
+ @keyframes breathe { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+ @media (prefers-reduced-motion:reduce) { .float,.breathe { animation:none; } }
+</style>
+<g clip-path="url(#bounds)">
+ <rect width="1200" height="440" fill="url(#canvas)"/>
+ <ellipse class="breathe" cx="955" cy="237" rx="340" ry="260" fill="url(#aura)"/>
+ <path d="M590 440 Q950 80 1200 150M630 440 Q970 100 1200 195" stroke="#96a7dc" stroke-opacity=".07" fill="none"/>
+ <ellipse cx="929" cy="362" rx="125" ry="18" fill="#000" opacity=".45" filter="url(#blur)"/>
+ <g class="float">
+  <path d="M874 81 C941 52 1038 95 1066 167 C1095 239 1039 309 969 339 C905 367 813 333 793 269 C771 202 802 114 874 81Z" fill="url(#liquid)" stroke="url(#rim)" stroke-width="1.5"/>
+  <path d="M901 117 C950 95 1016 126 1035 177 C1055 226 1012 280 965 302 C915 324 852 297 834 250 C814 199 847 142 901 117Z" fill="#090d1d" fill-opacity=".8" stroke="url(#rim)" stroke-opacity=".6"/>
+  <path d="M874 81 C805 120 781 214 807 274" fill="none" stroke="#b9ffff" stroke-opacity=".6" stroke-width="4" filter="url(#soft)"/>
+  <path d="M876 88 C836 108 807 151 801 191" fill="none" stroke="#e1ffff" stroke-opacity=".88" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M996 322 Q1050 297 1065 243" fill="none" stroke="#e4d3ff" stroke-opacity=".8" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="937" cy="213" rx="188" ry="54" transform="rotate(-28 937 213)" fill="none" stroke="#a2b5de" stroke-opacity=".18"/>
+  <circle cx="1099" cy="139" r="4" fill="#a8e3ed"/>
+  <circle cx="790" cy="292" r="2.5" fill="#ad9cec"/>
+ </g>
+ <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+  <rect x="54" y="49" width="173" height="29" rx="14.5" fill="#a9b9df" fill-opacity=".04" stroke="#b5c4e2" stroke-opacity=".16"/>
+  <circle cx="71" cy="63" r="3" fill="#a0d8d2"/>
+  <text x="84" y="67" font-size="10" letter-spacing="1.8" fill="#b5c7d9">ENGINEERING STUDENT</text>
+  <text x="50" y="184" font-size="79" letter-spacing="-4" font-weight="650" fill="#f2f4fa">Diyan Patel<tspan fill="#9b9de9">.</tspan></text>
+  <text x="55" y="236" font-size="24" letter-spacing="-.4" fill="#c4cad9">Building things that move.</text>
+  <text x="55" y="271" font-size="24" letter-spacing="-.4" fill="#7e899f">And the systems behind them.</text>
+  <path d="M55 318H625" stroke="#b8c6e0" stroke-opacity=".12"/>
+  <text x="55" y="353" font-size="11" letter-spacing="2" fill="#97a5bd">EMBEDDED SYSTEMS</text>
+  <circle cx="214" cy="349" r="1.5" fill="#67748b"/>
+  <text x="233" y="353" font-size="11" letter-spacing="2" fill="#97a5bd">ROBOTICS</text>
+  <circle cx="330" cy="349" r="1.5" fill="#67748b"/>
+  <text x="349" y="353" font-size="11" letter-spacing="2" fill="#97a5bd">COMPUTER VISION</text>
+  <text x="55" y="407" font-size="10" letter-spacing="1.3" fill="#626f86">AHMEDABAD UNIVERSITY</text>
+  <text x="1145" y="407" text-anchor="end" font-size="10" letter-spacing="1.3" fill="#626f86">HARDWARE / SOFTWARE / CURIOSITY</text>
+ </g>
 </g>
-<g transform="translate(1005 207)">
-<circle r="130" fill="none" stroke="#9c87ff" stroke-opacity=".35" stroke-dasharray="3 12"/>
-<circle r="110" fill="none" stroke="#4d8dff" stroke-opacity=".5"/>
-<path d="M-110 0a110 110 0 0 1 110-110M110 0a110 110 0 0 1-110 110" fill="none" stroke="#65e6ef" stroke-width="3"/>
-<rect x="-65" y="-65" width="130" height="130" rx="13" fill="#0c152b" stroke="url(#accent)" stroke-width="2"/>
-<rect x="-49" y="-49" width="98" height="98" rx="8" fill="#101d37" stroke="#293d60"/>
-<g stroke="#7498ca" stroke-width="3">'''
-for i in range(-42,43,14):
-    body += f'<path d="M{i} -80v15M{i} 65v15M-80 {i}h15M65 {i}h15"/>'
-body += '</g><text x="0" y="14" text-anchor="middle" font-family="Consolas,monospace" font-size="42" font-weight="700" fill="#e8f5ff">DP</text></g>'
-body += '<g font-family="Segoe UI,Arial,sans-serif">'
-body += txt(60,75,'ELECTRICAL & ELECTRONICS / ENGINEERING',16,'#65e6ef',600)
-body += txt(56,177,'DIYAN PATEL',76,'#f1f6ff',700)
-body += '<rect x="60" y="203" width="84" height="4" rx="2" fill="url(#accent)"/>'
-body += txt(60,257,'Electronics. Firmware. Software.',28,'#c1cce2')
-body += txt(60,301,'Embedded systems / Robotics / Autonomous vehicles',18,'#8f9fbe')
-body += txt(60,377,'AHMEDABAD UNIVERSITY',13,'#8194b5',600)
-body += '</g>'
-write('banner.svg','<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420">'+body+'</svg>')
+<rect x="1" y="1" width="1198" height="438" rx="26" fill="none" stroke="#c9d4f3" stroke-opacity=".14"/>
+''',1200,440,'Diyan Patel. Building things that move, and the systems behind them. Engineering student at Ahmedabad University.')
 
-for name,num,title,sub,color in [
-    ('embedded','01','STM32 Embedded Platform','AUTONOMOUS VEHICLES / FIRMWARE','#65e6ef'),
-    ('vision','02','Facial Recognition Attendance','ENR106 / COMPUTER VISION','#b2a3ff')]:
-    body = f'<rect x="1" y="26" width="3" height="95" rx="1" fill="{color}"/>'
-    body += txt(26,37,sub,12,color,600)+txt(26,86,title,29,'#edf4ff',600)
-    body += txt(26,120,'VIEW REPOSITORY  →',12,'#91a8cb',600)
-    body += txt(812,97,num,58,'#243451',600)
-    write('project-'+name+'.svg',card(920,148,body))
+body='''<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#10151f"/><stop offset="1" stop-color="#090d15"/></linearGradient></defs>
+<rect x="1" y="1" width="1198" height="166" rx="18" fill="url(#bg)" stroke="#252d3c"/>
+<path d="M401 30V138M801 30V138" stroke="#222b3a"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">'''
+for x,num,title,subtitle,color in [(30,'01','Close to the hardware','Firmware / interfaces / real-time systems','#b6d8e9'),(430,'02','Thinking in motion','Robotics / control / autonomy','#c3b9ec'),(830,'03','Making sense of pixels','Computer vision / Python / OpenCV','#acd6ce')]:
+    body+=f'<text x="{x}" y="40" font-size="11" letter-spacing="2" fill="{color}">{num} / FOCUS</text><text x="{x}" y="88" font-size="23" letter-spacing="-.6" fill="#e1e6f0">{title}</text><text x="{x}" y="121" font-size="13" fill="#8592a8">{subtitle}</text>'
+save('focus.svg',body+'</g>',1200,168,'Three areas of focus: embedded systems, robotics and computer vision.')
 
-# Compact local badges with distinct language/interface symbols.
-for slug,label,icon,color in [
-    ('c','C','C','#65e6ef'),('python','Python','Py','#b2a3ff'),
-    ('stm32','STM32','µ','#65e6ef'),('freertos','FreeRTOS','RT','#65e6ef'),
-    ('cubeide','STM32CubeIDE','▣','#65e6ef'),('opencv','OpenCV','CV','#b2a3ff'),
-    ('tkinter','Tkinter','Tk','#b2a3ff')]:
-    width = 63+len(label)*8
-    body = f'<rect width="{width}" height="32" rx="6" fill="#101a2e" stroke="#293c58"/><rect x="1" y="1" width="35" height="30" rx="5" fill="#1d2c46"/>'
-    body += txt(8,21,icon,13,color,600)+txt(45,21,label,13,'#d7e6fa',600)
-    write('badge-'+slug+'.svg',f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="32" viewBox="0 0 {width} 32"><g font-family="Segoe UI,Arial,sans-serif">{body}</g></svg>')
-write('footer.svg',card(920,75,'<path d="M30 1h860" stroke="#667ed1"/>'+txt(26,44,'DIYAN PATEL',14,'#65e6ef',600)+txt(513,44,'ELECTRONICS · FIRMWARE · SOFTWARE',13,'#92a4c6')))
+save('footer.svg','''<defs><linearGradient id="bg"><stop stop-color="#111622"/><stop offset="1" stop-color="#0d101b"/></linearGradient></defs>
+<rect x="1" y="1" width="1198" height="94" rx="18" fill="url(#bg)" stroke="#262e40"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+<text x="30" y="42" font-size="19" fill="#dce3f2" letter-spacing="-.4">A little curiosity. A lot of building.</text>
+<text x="30" y="66" font-size="12" fill="#7f8da5">Explore the code behind the ideas.</text>
+<rect x="982" y="27" width="187" height="42" rx="21" fill="#b5b9f1" fill-opacity=".08" stroke="#aab4ee" stroke-opacity=".25"/>
+<text x="1003" y="53" font-size="13" fill="#c7cef3">Explore repositories</text><path d="M1143 49h8m-4-4 4 4-4 4" stroke="#c7cef3" fill="none"/>
+</g>''',1200,96,'Explore Diyan Patel’s repositories.')
+print('Built dark liquid-glass hero, focus strip and footer; no external assets or fonts.')
 
-font_path = Path('C:/Windows/Fonts/consola.ttf')
-roles = ['Electrical & Electronics Engineering student','Embedded systems developer','Exploring robotics and autonomy']
-font_size = 23
-font = ImageFont.truetype(str(font_path),font_size)
-while max(font.getlength('> '+role+' _') for role in roles) > 704:
-    font_size -= 1
-    font = ImageFont.truetype(str(font_path),font_size)
-first=Image.new('RGB',(760,64),'#0b1224')
-ImageDraw.Draw(first).text((28,17),'> '+roles[0]+' _',font=font,fill='#65e6ef')
-frames=[first.copy() for _ in range(16)]
-for line in roles:
-    for n in range(len(line)+1):
-        im=Image.new('RGB',(760,64),'#0b1224'); d=ImageDraw.Draw(im)
-        text='> '+line[:n]+' _'
-        d.text((28,17),text,font=font,fill='#65e6ef')
-        frames.append(im)
-    frames.extend([im.copy() for _ in range(22)])
-frames[0].save(ASSETS/'engineering-roles.gif',save_all=True,append_images=frames[1:],duration=85,loop=0,optimize=True)
-print('Original banner, project cards, badges, footer and typing animation built.')
+# Narrow-screen art keeps labels legible rather than shrinking desktop typography.
+mobile = (ASSETS / 'banner.svg').read_text(encoding='utf-8')
+mobile = mobile.replace('width="1200" height="440" viewBox="0 0 1200 440"', 'width="600" height="600" viewBox="0 0 600 600"')
+mobile = mobile.replace('width="1198" height="438"', 'width="598" height="598"')
+mobile = mobile.replace('width="1200" height="440"', 'width="600" height="600"')
+mobile = mobile.replace('cx="955" cy="237"', 'cx="510" cy="140"')
+mobile = mobile.replace('<g class="float">', '<g transform="translate(-140 -25) scale(.67)"><g class="float">')
+mobile = mobile.replace(' <g font-family=', ' </g><g font-family=', 1)
+start = mobile.index(' <rect x="54"')
+end = mobile.index('</g>\n</g>\n<rect', start)
+mobile = mobile[:start] + '''
+ <rect x="34" y="35" width="173" height="29" rx="14.5" fill="#a9b9df" fill-opacity=".04" stroke="#b5c4e2" stroke-opacity=".16"/>
+ <circle cx="51" cy="49" r="3" fill="#a0d8d2"/>
+ <text x="64" y="53" font-size="10" letter-spacing="1.8" fill="#b5c7d9">ENGINEERING STUDENT</text>
+ <text x="30" y="286" font-size="68" letter-spacing="-3" font-weight="650" fill="#f2f4fa">Diyan Patel<tspan fill="#9b9de9">.</tspan></text>
+ <text x="34" y="340" font-size="27" fill="#c4cad9">Building things that move.</text>
+ <text x="34" y="380" font-size="27" fill="#7e899f">And the systems behind them.</text>
+ <path d="M34 424H566" stroke="#b8c6e0" stroke-opacity=".12"/>
+ <text x="34" y="468" font-size="15" letter-spacing="2" fill="#97a5bd">EMBEDDED SYSTEMS / ROBOTICS</text>
+ <text x="34" y="499" font-size="15" letter-spacing="2" fill="#97a5bd">COMPUTER VISION</text>
+ <text x="34" y="564" font-size="12" letter-spacing="1.3" fill="#7e8ca4">AHMEDABAD UNIVERSITY</text>
+''' + mobile[end:]
+(ASSETS / 'banner-mobile.svg').write_text('\n'.join(line.rstrip() for line in mobile.splitlines()) + '\n', encoding='utf-8')
+body='<rect x="1" y="1" width="598" height="418" rx="18" fill="#0b1019" stroke="#252d3c"/><g font-family="Segoe UI,Arial,sans-serif">'
+for y,num,title,subtitle in [(36,'01','Close to the hardware','Firmware / interfaces / real-time systems'),(176,'02','Thinking in motion','Robotics / control / autonomy'),(316,'03','Making sense of pixels','Computer vision / Python / OpenCV')]:
+    if y > 36:
+        body += f'<path d="M28 {y-22}H572" stroke="#222b3a"/>'
+    body += f'<text x="28" y="{y}" font-size="12" letter-spacing="2" fill="#b6c2df">{num} / FOCUS</text><text x="28" y="{y+38}" font-size="27" fill="#e1e6f0">{title}</text><text x="28" y="{y+70}" font-size="17" fill="#8592a8">{subtitle}</text>'
+save('focus-mobile.svg',body+'</g>',600,420,'Embedded systems, robotics and computer vision.')
+save('footer-mobile.svg','''<rect x="1" y="1" width="598" height="170" rx="18" fill="#0e131e" stroke="#262e40"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="28" y="44" font-size="25" fill="#dce3f2">A little curiosity. A lot of building.</text>
+<text x="28" y="76" font-size="18" fill="#8998ae">Explore the code behind the ideas.</text>
+<rect x="28" y="102" width="246" height="44" rx="22" fill="#b5b9f1" fill-opacity=".08" stroke="#aab4ee" stroke-opacity=".25"/>
+<text x="48" y="130" font-size="18" fill="#c7cef3">Explore repositories</text><path d="M245 123h9m-4-4 4 4-4 4" stroke="#c7cef3" fill="none"/></g>''',600,172,'Explore Diyan Patel’s repositories.')

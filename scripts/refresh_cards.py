@@ -21,7 +21,7 @@ def txt(x, y, text, size=16, color='#a8b8d1', weight=400):
     return f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}" font-weight="{weight}">{html.escape(str(text))}</text>'
 
 def card(width, height, body):
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}"><rect x="1" y="1" width="{width-2}" height="{height-2}" rx="16" fill="#0b1224" stroke="#243451"/><g font-family="Segoe UI,Arial,sans-serif">{body}</g></svg>'
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}"><rect x="1" y="1" width="{width-2}" height="{height-2}" rx="16" fill="#0b1019" stroke="#252e3e"/><g font-family="Segoe UI,Arial,sans-serif">{body}</g></svg>'
 
 def write(name, value):
     (ASSETS / name).write_text(value, encoding='utf-8')
@@ -37,9 +37,9 @@ def main():
         page += 1
     original = [r for r in repos if not r['fork'] and not r['private']]
     stars = sum(r['stargazers_count'] for r in original)
-    body = txt(24, 33, 'PUBLIC / REPOSITORIES', 13, '#65e6ef', 600)
+    body = txt(24, 33, 'PUBLIC / REPOSITORIES', 13, '#abcbd9', 600)
     for x, value, label in [(24,len(original),'Original repos'),(220,stars,'Stars received')]:
-        body += txt(x, 96, value, 44, '#edf4ff', 600) + txt(x, 124, label, 14)
+        body += txt(x, 96, value, 44, '#e5eaf3', 600) + txt(x, 124, label, 14)
     body += txt(24, 166, 'Public originals only · ' + STAMP, 12, '#8294b3')
     stats = card(450, 190, body)
     languages = {}
@@ -51,8 +51,8 @@ def main():
     shown = items[:3]
     if len(items) > 3:
         shown.append(('Other',sum(n for _, n in items[3:])))
-    colors = ['#65e6ef','#9c87ff','#4d8dff','#8494b2']
-    body = txt(24,33,'LANGUAGES / BY CODE BYTES',13,'#b2a3ff',600)
+    colors = ['#abcbd9','#aba0d6','#7c93c1','#8494b2']
+    body = txt(24,33,'LANGUAGES / BY CODE BYTES',13,'#bcb7e4',600)
     x = 24
     for (lang, count), color in zip(shown, colors):
         width = 402 * count / total
@@ -86,12 +86,12 @@ def main():
     while counts.get(cursor,0):
         current += 1
         cursor -= dt.timedelta(days=1)
-    body = txt(26,34,'ACTIVITY / PUBLIC CONTRIBUTION CALENDAR',13,'#65e6ef',600)
-    body += txt(26,67,f'{sum(counts.values())} contributions',23,'#edf4ff',600)
-    body += txt(510,66,f'Current streak  {current}d    /    Longest in window  {longest}d',14,'#b2a3ff')
+    body = txt(26,34,'ACTIVITY / PUBLIC CONTRIBUTION CALENDAR',13,'#abcbd9',600)
+    body += txt(26,67,f'{sum(counts.values())} contributions',23,'#e5eaf3',600)
+    body += txt(510,66,f'Current streak  {current}d    /    Longest in window  {longest}d',14,'#bcb7e4')
     start = min(counts)
     start -= dt.timedelta(days=(start.weekday()+1)%7)
-    palette = ['#18243b','#214957','#26778a','#36b6c9','#65e6ef']
+    palette = ['#18243b','#214957','#26778a','#36b6c9','#abcbd9']
     for day, count in sorted(counts.items()):
         week = (day-start).days//7
         row = (day.weekday()+1)%7
@@ -99,9 +99,9 @@ def main():
         body += f'<rect x="{31+week*16}" y="{90+row*16}" width="12" height="12" rx="3" fill="{palette[level]}"><title>{day}: {count} contributions</title></rect>'
     body += txt(26,232,f'{min(counts)} — {max(counts)} · Updated {STAMP} · UTC',12,'#8294b3')
     activity = card(920,255,body)
-    body = txt(24,33,'GITHUB / CONTRIBUTION STREAK',13,'#b2a3ff',600)
+    body = txt(24,33,'GITHUB / CONTRIBUTION STREAK',13,'#bcb7e4',600)
     for x, value, label in [(24,current,'Current streak'),(170,longest,'Longest streak'),(316,sum(counts.values()),'Contributions')]:
-        body += txt(x,96,value,38,'#edf4ff',600)+txt(x,124,label,12)
+        body += txt(x,96,value,38,'#e5eaf3',600)+txt(x,124,label,12)
     body += txt(24,166,'Last year · public calendar · UTC',12,'#8294b3')
     streak = card(450,190,body)
     ist = dt.datetime.now(dt.timezone(dt.timedelta(hours=5,minutes=30)))

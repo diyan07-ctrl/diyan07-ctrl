@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="75" viewBox="0 0 920 75"><rect x="1" y="1" width="918" height="73" rx="16" fill="#0b1224" stroke="#243451"/><g font-family="Segoe UI,Arial,sans-serif"><path d="M30 1h860" stroke="#667ed1"/><text x="26" y="44" font-size="14" fill="#65e6ef" font-weight="600">DIYAN PATEL</text><text x="513" y="44" font-size="13" fill="#92a4c6" font-weight="400">ELECTRONICS · FIRMWARE · SOFTWARE</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="96" viewBox="0 0 1200 96" role="img" aria-labelledby="title"><title id="title">Explore Diyan Patel’s repositories.</title><defs><linearGradient id="bg"><stop stop-color="#111622"/><stop offset="1" stop-color="#0d101b"/></linearGradient></defs>
+<rect x="1" y="1" width="1198" height="94" rx="18" fill="url(#bg)" stroke="#262e40"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+<text x="30" y="42" font-size="19" fill="#dce3f2" letter-spacing="-.4">A little curiosity. A lot of building.</text>
+<text x="30" y="66" font-size="12" fill="#7f8da5">Explore the code behind the ideas.</text>
+<rect x="982" y="27" width="187" height="42" rx="21" fill="#b5b9f1" fill-opacity=".08" stroke="#aab4ee" stroke-opacity=".25"/>
+<text x="1003" y="53" font-size="13" fill="#c7cef3">Explore repositories</text><path d="M1143 49h8m-4-4 4 4-4 4" stroke="#c7cef3" fill="none"/>
+</g></svg>

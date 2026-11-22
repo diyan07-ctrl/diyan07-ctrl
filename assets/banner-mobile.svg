@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-labelledby="title"><title id="title">Diyan Patel. Building things that move, and the systems behind them. Engineering student at Ahmedabad University.</title>
+<defs>
+ <linearGradient id="canvas" x2="1" y2="1"><stop stop-color="#10141e"/><stop offset=".55" stop-color="#080b12"/><stop offset="1" stop-color="#111125"/></linearGradient>
+ <radialGradient id="aura"><stop stop-color="#6358ed" stop-opacity=".38"/><stop offset="1" stop-color="#6358ed" stop-opacity="0"/></radialGradient>
+ <linearGradient id="liquid" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#d2ffff" stop-opacity=".94"/><stop offset=".17" stop-color="#78d9ee" stop-opacity=".5"/><stop offset=".43" stop-color="#384a93" stop-opacity=".16"/><stop offset=".72" stop-color="#8d72f1" stop-opacity=".4"/><stop offset="1" stop-color="#dfd2ff" stop-opacity=".9"/></linearGradient>
+ <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ecffff" stop-opacity=".9"/><stop offset=".35" stop-color="#a1b9ff" stop-opacity=".1"/><stop offset=".7" stop-color="#b6a3ff" stop-opacity=".2"/><stop offset="1" stop-color="#e2dcff" stop-opacity=".9"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+ <clipPath id="bounds"><rect x="1" y="1" width="598" height="598" rx="26"/></clipPath>
+</defs>
+<style>
+ .float { animation: float 10s ease-in-out infinite; transform-origin: 920px 217px; }
+ .breathe { animation: breathe 8s ease-in-out infinite; }
+ @keyframes float { 0%,100% { transform:translateY(0) rotate(-3deg); } 50% { transform:translateY(-10px) rotate(3deg); } }
+ @keyframes breathe { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+ @media (prefers-reduced-motion:reduce) { .float,.breathe { animation:none; } }
+</style>
+<g clip-path="url(#bounds)">
+ <rect width="600" height="600" fill="url(#canvas)"/>
+ <ellipse class="breathe" cx="510" cy="140" rx="340" ry="260" fill="url(#aura)"/>
+ <path d="M590 440 Q950 80 1200 150M630 440 Q970 100 1200 195" stroke="#96a7dc" stroke-opacity=".07" fill="none"/>
+ <ellipse cx="929" cy="362" rx="125" ry="18" fill="#000" opacity=".45" filter="url(#blur)"/>
+ <g transform="translate(-140 -25) scale(.67)"><g class="float">
+  <path d="M874 81 C941 52 1038 95 1066 167 C1095 239 1039 309 969 339 C905 367 813 333 793 269 C771 202 802 114 874 81Z" fill="url(#liquid)" stroke="url(#rim)" stroke-width="1.5"/>
+  <path d="M901 117 C950 95 1016 126 1035 177 C1055 226 1012 280 965 302 C915 324 852 297 834 250 C814 199 847 142 901 117Z" fill="#090d1d" fill-opacity=".8" stroke="url(#rim)" stroke-opacity=".6"/>
+  <path d="M874 81 C805 120 781 214 807 274" fill="none" stroke="#b9ffff" stroke-opacity=".6" stroke-width="4" filter="url(#soft)"/>
+  <path d="M876 88 C836 108 807 151 801 191" fill="none" stroke="#e1ffff" stroke-opacity=".88" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M996 322 Q1050 297 1065 243" fill="none" stroke="#e4d3ff" stroke-opacity=".8" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="937" cy="213" rx="188" ry="54" transform="rotate(-28 937 213)" fill="none" stroke="#a2b5de" stroke-opacity=".18"/>
+  <circle cx="1099" cy="139" r="4" fill="#a8e3ed"/>
+  <circle cx="790" cy="292" r="2.5" fill="#ad9cec"/>
+ </g>
+ </g><g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+
+ <rect x="34" y="35" width="173" height="29" rx="14.5" fill="#a9b9df" fill-opacity=".04" stroke="#b5c4e2" stroke-opacity=".16"/>
+ <circle cx="51" cy="49" r="3" fill="#a0d8d2"/>
+ <text x="64" y="53" font-size="10" letter-spacing="1.8" fill="#b5c7d9">ENGINEERING STUDENT</text>
+ <text x="30" y="286" font-size="68" letter-spacing="-3" font-weight="650" fill="#f2f4fa">Diyan Patel<tspan fill="#9b9de9">.</tspan></text>
+ <text x="34" y="340" font-size="27" fill="#c4cad9">Building things that move.</text>
+ <text x="34" y="380" font-size="27" fill="#7e899f">And the systems behind them.</text>
+ <path d="M34 424H566" stroke="#b8c6e0" stroke-opacity=".12"/>
+ <text x="34" y="468" font-size="15" letter-spacing="2" fill="#97a5bd">EMBEDDED SYSTEMS / ROBOTICS</text>
+ <text x="34" y="499" font-size="15" letter-spacing="2" fill="#97a5bd">COMPUTER VISION</text>
+ <text x="34" y="564" font-size="12" letter-spacing="1.3" fill="#7e8ca4">AHMEDABAD UNIVERSITY</text>
+</g>
+</g>
+<rect x="1" y="1" width="598" height="598" rx="26" fill="none" stroke="#c9d4f3" stroke-opacity=".14"/>
+</svg>
