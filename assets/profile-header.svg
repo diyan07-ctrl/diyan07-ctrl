@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="232" viewBox="0 0 1200 232" role="img" aria-labelledby="title"><title id="title">Diyan Patel, Electrical and Electronics Engineering student at Ahmedabad University.</title>
+<defs>
+ <linearGradient id="background" x2="1" y2=".4"><stop stop-color="#121720"/><stop offset="1" stop-color="#0d1117"/></linearGradient>
+ <linearGradient id="edge"><stop stop-color="#7e99b6" stop-opacity=".6"/><stop offset="1" stop-color="#7e99b6" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="1" y="1" width="1198" height="230" rx="14" fill="url(#background)" stroke="#29313c"/>
+<path d="M48 1H1120" stroke="url(#edge)"/>
+<g stroke="#72849a" stroke-opacity=".17" fill="none" stroke-width="1.5">
+<path d="M970 60h92v42h90M1018 60v92h102M970 174h42v-22"/>
+<circle cx="970" cy="60" r="4"/><circle cx="1156" cy="102" r="4"/><circle cx="1124" cy="152" r="4"/><circle cx="966" cy="174" r="4"/>
+</g><g font-family="Segoe UI,Arial,sans-serif">
+<text x="48" y="100" font-size="60" font-weight="600" letter-spacing="-2" fill="#e6edf3">Diyan Patel</text>
+<text x="48" y="147" font-size="23" fill="#a9b6c7">Electrical &amp; Electronics Engineering</text>
+<text x="48" y="181" font-size="17" fill="#7d8b9e">Ahmedabad University</text>
+</g></svg>
